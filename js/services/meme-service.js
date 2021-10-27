@@ -65,6 +65,15 @@ function getSelectedImgId(){
     return gMeme.selectedImgId
 }
 
+function getTxt(selectedLineIdx){
+    console.log('gMeme.lines[selectedLineIdx].txt',gMeme.lines[selectedLineIdx].txt)
+    return gMeme.lines[selectedLineIdx].txt
+}
+
+function getSelectedLineIdx(){
+    return gMeme.selectedLineIdx
+}
+
 
 
 // TODO

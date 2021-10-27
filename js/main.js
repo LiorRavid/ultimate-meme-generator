@@ -17,6 +17,17 @@ function drawImg() {
     // add an imageId instead of 5
     img.onload = () => {
       gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-    };
+      drawText(getTxt(getSelectedLineIdx()), 250, 50)
+    }
+}
+
+function drawText(text, x, y) {
+    gCtx.lineWidth = 2;
+    gCtx.strokeStyle = 'black'
+    gCtx.fillStyle = 'white'
+    gCtx.font = `50px 'impact'`
+    gCtx.textAlign='center'
+    gCtx.fillText(text, x, y)
+    gCtx.strokeText(text, x, y)
   }
   
