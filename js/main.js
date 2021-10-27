@@ -37,19 +37,7 @@ function drawText(text, x, y) {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
   }
 
-  function onAddText(){
-    var elTxt = document.querySelector('.input-text')
-    const txt = elTxt.value
-    addText(txt, getSelectedLineIdx())
-    clearCanvas()
-    drawImg()
-  }
-
-  document.querySelector('.input-text').addEventListener('keyup',function(){
-    var txt = document.querySelector('.input-text').value;
-    addText(txt, getSelectedLineIdx())
-    drawImg()
-  })
+  
 
   function getLines(ctx, text, maxWidth) {
     var words = text.split(" ")
@@ -70,6 +58,12 @@ function drawText(text, x, y) {
     return lines
 }
 
+document.querySelector('.input-text').addEventListener('keyup',function(){
+  var txt = document.querySelector('.input-text').value;
+  addText(txt, getSelectedLineIdx())
+  drawImg()
+})
+
 function fillText(txtLines, x , y){
   var lineIdx = 1
   const linesLength = txtLines.length
@@ -85,3 +79,10 @@ function fillText(txtLines, x , y){
   }
 }
 
+// function onAddText(){
+  //   var elTxt = document.querySelector('.input-text')
+  //   const txt = elTxt.value
+  //   addText(txt, getSelectedLineIdx())
+  //   clearCanvas()
+  //   drawImg()
+  // }
