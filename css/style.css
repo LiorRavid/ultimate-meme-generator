@@ -14,5 +14,7 @@ canvas{
     background-color: white;
     object-fit: cover;
     font-family: "impacted";
+    position: relative;
 }
+
 

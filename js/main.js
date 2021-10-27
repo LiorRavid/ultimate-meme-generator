@@ -38,12 +38,18 @@ function drawText(text, x, y) {
   }
 
   function onAddText(){
-    var elTxt = document.querySelector('input')
+    var elTxt = document.querySelector('.input-text')
     const txt = elTxt.value
     addText(txt, getSelectedLineIdx())
     clearCanvas()
     drawImg()
   }
+
+  document.querySelector('.input-text').addEventListener('keyup',function(){
+    var txt = document.querySelector('.input-text').value;
+    addText(txt, getSelectedLineIdx())
+    drawImg()
+  })
 
   function getLines(ctx, text, maxWidth) {
     var words = text.split(" ")
