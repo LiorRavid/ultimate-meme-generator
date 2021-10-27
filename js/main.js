@@ -22,12 +22,60 @@ function drawImg() {
 }
 
 function drawText(text, x, y) {
+    var maxWidth = 400
     gCtx.lineWidth = 2;
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = 'white'
-    gCtx.font = `50px 'impact'`
+    gCtx.font = '50px \'impact\''
     gCtx.textAlign='center'
-    gCtx.fillText(text, x, y)
-    gCtx.strokeText(text, x, y)
+    var txtLines = getLines(gCtx, text, maxWidth)
+    fillText(txtLines, x, y)
+    // gCtx.strokeText(text, x, y)
   }
-  
+
+  function clearCanvas() {
+    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+  }
+
+  function onAddText(){
+    var elTxt = document.querySelector('input')
+    const txt = elTxt.value
+    addText(txt, getSelectedLineIdx())
+    clearCanvas()
+    drawImg()
+  }
+
+  function getLines(ctx, text, maxWidth) {
+    var words = text.split(" ")
+    var lines = []
+    var currentLine = words[0]
+
+    for (var i = 1; i < words.length; i++) {
+        var word = words[i]
+        var width = ctx.measureText(currentLine + " " + word).width
+        if (width < maxWidth) {
+            currentLine += " " + word
+        } else {
+            lines.push(currentLine)
+            currentLine = word;
+        }
+    }
+    lines.push(currentLine)
+    return lines
+}
+
+function fillText(txtLines, x , y){
+  var lineIdx = 1
+  const linesLength = txtLines.length
+  if (linesLength===1){
+    gCtx.fillText(txtLines[0], x,  y)
+    gCtx.strokeText(txtLines[0], x,  y)
+  }else {
+    txtLines.forEach(txtLine => {
+      gCtx.fillText(txtLine, x, y*lineIdx)
+      gCtx.strokeText(txtLine, x,  y*lineIdx)
+      lineIdx++
+    })
+  }
+}
+

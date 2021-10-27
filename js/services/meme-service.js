@@ -67,11 +67,17 @@ function getSelectedImgId(){
 
 function getTxt(selectedLineIdx){
     console.log('gMeme.lines[selectedLineIdx].txt',gMeme.lines[selectedLineIdx].txt)
-    return gMeme.lines[selectedLineIdx].txt
+    return gMeme.lines[selectedLineIdx].txt.toUpperCase()
 }
 
 function getSelectedLineIdx(){
     return gMeme.selectedLineIdx
+}
+
+function addText(txt,selectedLineIdx){
+    console.log('txt',txt)
+    gMeme.lines[selectedLineIdx].txt = txt
+    console.log('gMeme',gMeme.lines[selectedLineIdx].txt)
 }
 
 
