@@ -11,14 +11,15 @@
     <div class="canvas-container">
       <canvas height="500" width="500"></canvas>
     </div>
-    <input type="text" class="input-text" placeholder="Add Text" />
-    <button class="increase-font" onclick="onIncreaseFont()">A+</button>
-    <button class="decrease-font" onclick="onDecreaseFont()">A-</button>
-    <button class="up" onclick="onUpLine()">↑</button>
-    <button class="down" onclick="onDownLine()">↓</button>
-    <button class="add-line" onclick="onaddLine()">+</button>
-    <button class="switch-line" onclick="onSwitchLine()">↑↓</button>
-
+    <div class="controller flex align-center">
+      <input type="text" class="input-text" placeholder="Add Text" />
+      <button class="increase-font" onclick="onIncreaseFont()">A+</button>
+      <button class="decrease-font" onclick="onDecreaseFont()">A-</button>
+      <button class="up" onclick="onUpLine()">↑</button>
+      <button class="down" onclick="onDownLine()">↓</button>
+      <button class="add-line" onclick="onaddLine()">+</button>
+      <button class="switch-line" onclick="onSwitchLine()">↑↓</button>
+    </div>
     <div class="gallery">
       <header class="main-header main-layout flex space-between align-center">
         <div class="logo">
@@ -43,16 +44,7 @@
         </div>
       </main>
     </div>
-    <!-- <header>
-        <h1>Gallery</h1>
-    </header>
-    <main class="main-content main-layout">
-        <div class="gallery">
-            <img id="13" src="./img/13.jpg" alt="" onclick="onEditMeme(this)"/>
-            <img id="5" src="./img/5.jpg" alt="" onclick="onEditMeme(this)"/>
-        </div>
-    </main> -->
-
+    
     <script src="js/services/storage-service.js"></script>
     <script src="js/services/utils-service.js"></script>
     <script src="js/services/meme-service.js"></script>
