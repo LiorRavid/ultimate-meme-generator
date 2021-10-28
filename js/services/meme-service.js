@@ -16,13 +16,11 @@ function createMeme(selectedImgId, selectedLineIdx){
         selectedLineIdx,
         lines: _createLines()
     }
-    console.log('meme',meme)
     return meme
 }
 
 function _createLines(){
     var lines = [_createLine()]
-    console.log('lines',lines);
     return lines
 }
 
@@ -31,9 +29,10 @@ function _createLine(){
         txt: 'I never eat Falafel', 
             size: 20, 
             align: 'left', 
-            color: 'red' 
+            color: 'red',
+            posX:250,
+            posY:50 
     }
-    console.log('line',line);
     return line
 }
 
@@ -65,6 +64,10 @@ function getSelectedImgId(){
     return gMeme.selectedImgId
 }
 
+function changeSelectedImg(imgId){
+    gMeme.selectedImgId= imgId - 1
+}
+
 function getTxt(selectedLineIdx){
     console.log('gMeme.lines[selectedLineIdx].txt',gMeme.lines[selectedLineIdx].txt)
     return gMeme.lines[selectedLineIdx].txt.toUpperCase()
@@ -79,6 +82,28 @@ function addText(txt,selectedLineIdx){
     gMeme.lines[selectedLineIdx].txt = txt
     console.log('gMeme',gMeme.lines[selectedLineIdx].txt)
 }
+
+function getLinePosX(lineNum){
+    return gMeme.lines[lineNum].posX
+}
+
+function getLinePosY(lineNum){
+    return gMeme.lines[lineNum].posY
+}
+
+function changeLinePosX(lineNum, x){
+    gMeme.lines[lineNum].posX = x
+}
+
+function changeLinePosY(lineNum, y){
+    gMeme.lines[lineNum].posY = y
+}
+
+function addLine(){
+
+}
+
+function switchLine(){}
 
 
 

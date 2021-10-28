@@ -9,11 +9,27 @@
 </head>
 <body onload="init()">
     <div class="canvas-container">
-        <canvas height="500" width= "500">
-            <div class="text"><h2>hello mister</h2></div>
-        </canvas>
+        <canvas height="500" width= "500"></canvas>
     </div>
-    <input type="text" class="input-text" placeholder="Add Text"/>
+    <input type="text" class="input-text" placeholder="Add Text" />
+    <button class="increase-font" onclick="onIncreaseFont()">A+</button>
+    <button class="decrease-font" onclick="onDecreaseFont()">A-</button>
+    <button class="up" onclick="onUpLine()">↑</button>
+    <button class="down" onclick="onDownLine()">↓</button>
+    <button class="add-line" onclick="onaddLine()">+</button>
+    <button class="switch-line" onclick="onSwitchLine()">↑↓</button>
+
+    
+    <header>
+        <h1>Gallery</h1>
+    </header>
+    <main class="main-content main-layout">
+        <div class="gallery">
+            <img id="13" src="./img/13.jpg" alt="" onclick="onEditMeme(this)"/>
+            <img id="5" src="./img/5.jpg" alt="" onclick="onEditMeme(this)"/>
+        </div>
+    </main>
+
     
     
     

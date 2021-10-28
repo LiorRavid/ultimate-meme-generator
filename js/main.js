@@ -2,12 +2,13 @@
 
 var gElCanvas
 var gCtx
+var gFontSize = 50
+var gLineNum = 0 
 
 function init() {
   gElCanvas = document.querySelector('canvas')
-  console.log('gElCanvas',gElCanvas);
   gCtx = gElCanvas.getContext('2d')
-  drawImg()
+  // drawImg()
   // resizeCanvas()
 }
 
@@ -17,16 +18,16 @@ function drawImg() {
     // add an imageId instead of 5
     img.onload = () => {
       gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-      drawText(getTxt(getSelectedLineIdx()), 250, 50)
+      drawText(getTxt(getSelectedLineIdx()), getLinePosX(gLineNum), getLinePosY(gLineNum))
     }
 }
 
 function drawText(text, x, y) {
     var maxWidth = 400
-    gCtx.lineWidth = 2;
+    gCtx.lineWidth = 2
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = 'white'
-    gCtx.font = '50px \'impact\''
+    gCtx.font = `${gFontSize}px 'impact'`
     gCtx.textAlign='center'
     var txtLines = getLines(gCtx, text, maxWidth)
     fillText(txtLines, x, y)
@@ -65,18 +66,81 @@ document.querySelector('.input-text').addEventListener('keyup',function(){
 })
 
 function fillText(txtLines, x , y){
-  var lineIdx = 1
+  var lineIdx = 0
   const linesLength = txtLines.length
   if (linesLength===1){
     gCtx.fillText(txtLines[0], x,  y)
     gCtx.strokeText(txtLines[0], x,  y)
   }else {
     txtLines.forEach(txtLine => {
-      gCtx.fillText(txtLine, x, y*lineIdx)
-      gCtx.strokeText(txtLine, x,  y*lineIdx)
+      gCtx.fillText(txtLine, x, y + lineIdx*gFontSize)
+      gCtx.strokeText(txtLine, x,  y + lineIdx*gFontSize)
       lineIdx++
     })
   }
+}
+
+function onEditMeme(elImg){
+  clearCanvas()
+  var imgId = elImg.id
+  changeSelectedImg(imgId)
+  hideGallery()
+  showEdit()
+  drawImg()
+}
+
+function hideGallery(){
+  document.querySelector('.main-content').style.display='none'
+  document.querySelector('h1').style.display='none'
+}
+
+function showEdit(){
+  document.querySelector('canvas').style.display='block'
+  document.querySelector('input').style.display='block'
+  document.querySelector('.increase-font').style.display='block'
+  document.querySelector('.decrease-font').style.display='block'
+  document.querySelector('.up').style.display='block'
+  document.querySelector('.down').style.display='block'
+  document.querySelector('.add-line').style.display='block'
+  document.querySelector('.switch-line').style.display='block'
+}
+
+function onIncreaseFont(){
+  clearCanvas()
+  gFontSize+=2
+  drawImg()
+}
+
+function onDecreaseFont(){
+  clearCanvas()
+  gFontSize-=2
+  drawImg()
+}
+
+function onUpLine(){
+  clearCanvas()
+  var LinePosY = getLinePosY(gLineNum)
+  LinePosY-=10
+  if(LinePosY<50)LinePosY=50
+  changeLinePosY(gLineNum, LinePosY)
+  drawImg()
+}
+
+function onDownLine(){
+  clearCanvas()
+  var LinePosY = getLinePosY(gLineNum)
+  LinePosY+=10
+  if(LinePosY>490)LinePosY=490
+  changeLinePosY(gLineNum, LinePosY)
+  drawImg()
+}
+
+function onaddLine(){
+  addLine()
+}
+
+function onSwitchLine(){
+  witchLine()
 }
 
 // function onAddText(){
