@@ -90,8 +90,7 @@ function onEditMeme(elImg){
 }
 
 function hideGallery(){
-  document.querySelector('.main-content').style.display='none'
-  document.querySelector('h1').style.display='none'
+  document.querySelector('.gallery').style.display='none'
 }
 
 function showEdit(){

@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
     <title>Document</title>
-</head>
-<body onload="init()">
+  </head>
+  <body onload="init()">
     <div class="canvas-container">
-        <canvas height="500" width= "500"></canvas>
+      <canvas height="500" width="500"></canvas>
     </div>
     <input type="text" class="input-text" placeholder="Add Text" />
     <button class="increase-font" onclick="onIncreaseFont()">A+</button>
@@ -19,8 +19,31 @@
     <button class="add-line" onclick="onaddLine()">+</button>
     <button class="switch-line" onclick="onSwitchLine()">↑↓</button>
 
-    
-    <header>
+    <div class="gallery">
+      <header class="main-header main-layout flex space-between align-center">
+        <div class="logo">
+          <img src="img/cooltext338881859335046 1.png" alt="" />
+        </div>
+        <ul class="main-nav flex clean-list">
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </header>
+      <main class="main-gallery main-layout">
+        <div class="grid">
+          <div class="image1 grid" id="1" onclick="onEditMeme(this)"></div>
+          <div class="image2 grid" id="2" onclick="onEditMeme(this)"></div>
+          <div class="image3 grid" id="3" onclick="onEditMeme(this)"></div>
+          <div class="image4 grid" id="4" onclick="onEditMeme(this)"></div>
+          <div class="image5 grid" id="5" onclick="onEditMeme(this)"></div>
+          <div class="image6 grid" id="6" onclick="onEditMeme(this)"></div>
+          <div class="image7 grid" id="7" onclick="onEditMeme(this)"></div>
+          <div class="image8 grid" id="8" onclick="onEditMeme(this)"></div>
+          <div class="image9 grid" id="9" onclick="onEditMeme(this)"></div>
+        </div>
+      </main>
+    </div>
+    <!-- <header>
         <h1>Gallery</h1>
     </header>
     <main class="main-content main-layout">
@@ -28,16 +51,12 @@
             <img id="13" src="./img/13.jpg" alt="" onclick="onEditMeme(this)"/>
             <img id="5" src="./img/5.jpg" alt="" onclick="onEditMeme(this)"/>
         </div>
-    </main>
-
-    
-    
-    
+    </main> -->
 
     <script src="js/services/storage-service.js"></script>
     <script src="js/services/utils-service.js"></script>
     <script src="js/services/meme-service.js"></script>
     <script src="js/gmeme-controller.js"></script>
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>
