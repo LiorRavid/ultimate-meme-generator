@@ -24,14 +24,14 @@ function _createLines(){
     return lines
 }
 
-function _createLine(){
+function _createLine(posX=250,posY=50){
     var line = {
         txt: 'I never eat Falafel', 
             size: 20, 
             align: 'left', 
             color: 'red',
-            posX:250,
-            posY:50 
+            posX,
+            posY 
     }
     return line
 }
@@ -56,6 +56,10 @@ function _createImg(){
     return img
 }
 
+function getTexts(){
+    return gMeme.lines
+}
+
 function getImgUrl(selectedImgId){
     return gImgs[selectedImgId].url
 }
@@ -68,44 +72,49 @@ function changeSelectedImg(imgId){
     gMeme.selectedImgId= imgId - 1
 }
 
-function getTxt(selectedLineIdx){
-    console.log('gMeme.lines[selectedLineIdx].txt',gMeme.lines[selectedLineIdx].txt)
-    return gMeme.lines[selectedLineIdx].txt.toUpperCase()
-}
-
-function getSelectedLineIdx(){
-    return gMeme.selectedLineIdx
-}
-
-function addText(txt,selectedLineIdx){
-    console.log('txt',txt)
-    gMeme.lines[selectedLineIdx].txt = txt
-    console.log('gMeme',gMeme.lines[selectedLineIdx].txt)
-}
-
-function getLinePosX(lineNum){
-    return gMeme.lines[lineNum].posX
-}
-
-function getLinePosY(lineNum){
-    return gMeme.lines[lineNum].posY
-}
-
-function changeLinePosX(lineNum, x){
-    gMeme.lines[lineNum].posX = x
-}
-
-function changeLinePosY(lineNum, y){
-    gMeme.lines[lineNum].posY = y
-}
-
-function addLine(){
+function changeSelectedLineIdx(){
 
 }
 
-function switchLine(){}
+function addText(txt){
+    gMeme.lines[gMeme.selectedLineIdx].txt = txt.toUpperCase()
+}
 
+function getTxt(){
+    return gMeme.lines[gMeme.selectedLineIdx].txt
+}
 
+function getLinePosX(){
+    return gMeme.lines[gMeme.selectedLineIdx].posX
+}
+
+function getLinePosY(){
+    return gMeme.lines[gMeme.selectedLineIdx].posY
+}
+
+function changeLinePosX(x){
+    gMeme.lines[gMeme.selectedLineIdx].posX = x
+}
+
+function changeLinePosY(y){
+    gMeme.lines[gMeme.selectedLineIdx].posY = y
+}
+
+function addLine() {
+    gMeme.selectedLineIdx++
+	gMeme.lines.push(
+		_createLine(undefined,gMeme.lines[gMeme.lines.length - 1].posY + 430)
+	)
+    console.log('pos after add',gMeme.lines[gMeme.lines.length - 1].posY + 430);
+}
+
+function switchLine() {
+	if (gMeme.selectedLineIdx === gMeme.lines.length - 1) {
+		gMeme.selectedLineIdx = 0;
+		return;
+	}
+	gMeme.selectedLineIdx = gMeme.selectedLineIdx + 1;
+}
 
 // TODO
 // function addImg

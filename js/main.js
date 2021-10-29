@@ -3,7 +3,6 @@
 var gElCanvas
 var gCtx
 var gFontSize = 50
-var gLineNum = 0 
 
 function init() {
   gElCanvas = document.querySelector('canvas')
@@ -18,7 +17,14 @@ function drawImg() {
     // add an imageId instead of 5
     img.onload = () => {
       gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-      drawText(getTxt(getSelectedLineIdx()), getLinePosX(gLineNum), getLinePosY(gLineNum))
+      var texts = getTexts()
+      texts.forEach((text)=>{
+        console.log('text',text);
+        console.log('text.txt',text.txt);
+        console.log('txt,posX',text.posX);
+        console.log('txt.posY',text.posY);
+        drawText(text.txt, text.posX, text.posY)
+      })
     }
 }
 
@@ -61,7 +67,7 @@ function drawText(text, x, y) {
 
 document.querySelector('.input-text').addEventListener('keyup',function(){
   var txt = document.querySelector('.input-text').value;
-  addText(txt, getSelectedLineIdx())
+  addText(txt)
   drawImg()
 })
 
@@ -81,7 +87,7 @@ function fillText(txtLines, x , y){
 }
 
 function onEditMeme(elImg){
-  clearCanvas()
+  // clearCanvas()
   var imgId = elImg.id
   changeSelectedImg(imgId)
   hideGallery()
@@ -105,41 +111,49 @@ function showEdit(){
 }
 
 function onIncreaseFont(){
-  clearCanvas()
+  // clearCanvas()
   gFontSize+=2
   drawImg()
 }
 
 function onDecreaseFont(){
-  clearCanvas()
+  // clearCanvas()
   gFontSize-=2
   drawImg()
 }
 
 function onUpLine(){
-  clearCanvas()
-  var LinePosY = getLinePosY(gLineNum)
+  // clearCanvas()
+  var LinePosY = getLinePosY()
   LinePosY-=10
   if(LinePosY<50)LinePosY=50
-  changeLinePosY(gLineNum, LinePosY)
+  changeLinePosY(LinePosY)
   drawImg()
 }
 
 function onDownLine(){
-  clearCanvas()
-  var LinePosY = getLinePosY(gLineNum)
+  // clearCanvas()
+  var LinePosY = getLinePosY()
   LinePosY+=10
   if(LinePosY>490)LinePosY=490
-  changeLinePosY(gLineNum, LinePosY)
+  changeLinePosY(LinePosY)
   drawImg()
 }
 
 function onaddLine(){
   addLine()
+  changeInputValue()
+  drawImg()
 }
 
 function onSwitchLine(){
-  witchLine()
+  switchLine()
+  changeInputValue()
+}
+
+function changeInputValue(){
+  var txt = getTxt()
+  document.querySelector('.input-text').value = txt
 }
 
 // function onAddText(){
