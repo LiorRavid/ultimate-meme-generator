@@ -2,7 +2,7 @@
 
 var gElCanvas
 var gCtx
-var gFontSize = 50
+var gRectX = 10
 
 function init() {
   gElCanvas = document.querySelector('canvas')
@@ -17,26 +17,24 @@ function drawImg() {
     // add an imageId instead of 5
     img.onload = () => {
       gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-      var texts = getTexts()
-      texts.forEach((text)=>{
-        console.log('text',text);
-        console.log('text.txt',text.txt);
-        console.log('txt,posX',text.posX);
-        console.log('txt.posY',text.posY);
-        drawText(text.txt, text.posX, text.posY)
+      var lines = getTexts()
+      var posY= getLinePosY()
+      drawRect(gRectX ,posY-getFontSize()+5)
+      lines.forEach((line)=>{
+        drawText(line, line.posX, line.posY)
       })
     }
 }
 
-function drawText(text, x, y) {
+function drawText(line, x, y) {
     var maxWidth = 400
     gCtx.lineWidth = 2
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = 'white'
-    gCtx.font = `${gFontSize}px 'impact'`
+    gCtx.font = `${line.size}px 'impact'`
     gCtx.textAlign='center'
-    var txtLines = getLines(gCtx, text, maxWidth)
-    fillText(txtLines, x, y)
+    var txtLines = getLines(gCtx, line.txt, maxWidth)
+    fillText(txtLines,line.size, x, y)
     // gCtx.strokeText(text, x, y)
   }
 
@@ -71,7 +69,7 @@ document.querySelector('.input-text').addEventListener('keyup',function(){
   drawImg()
 })
 
-function fillText(txtLines, x , y){
+function fillText(txtLines, fontZise, x , y){
   var lineIdx = 0
   const linesLength = txtLines.length
   if (linesLength===1){
@@ -79,8 +77,9 @@ function fillText(txtLines, x , y){
     gCtx.strokeText(txtLines[0], x,  y)
   }else {
     txtLines.forEach(txtLine => {
-      gCtx.fillText(txtLine, x, y + lineIdx*gFontSize)
-      gCtx.strokeText(txtLine, x,  y + lineIdx*gFontSize)
+      console.log('lineIdx*txtLine.size',lineIdx*fontZise);
+      gCtx.fillText(txtLine, x, y + lineIdx*fontZise)
+      gCtx.strokeText(txtLine, x,  y + lineIdx*fontZise)
       lineIdx++
     })
   }
@@ -112,13 +111,13 @@ function showEdit(){
 
 function onIncreaseFont(){
   // clearCanvas()
-  gFontSize+=2
+  increaseFontSize()
   drawImg()
 }
 
 function onDecreaseFont(){
   // clearCanvas()
-  gFontSize-=2
+  decreaseFontSize()
   drawImg()
 }
 
@@ -149,6 +148,7 @@ function onaddLine(){
 function onSwitchLine(){
   switchLine()
   changeInputValue()
+  drawImg()
 }
 
 function changeInputValue(){
@@ -162,4 +162,17 @@ function changeInputValue(){
   //   addText(txt, getSelectedLineIdx())
   //   clearCanvas()
   //   drawImg()
+  // }
+
+  function drawRect(x,y){
+    gCtx.beginPath();
+    var fontSize = getFontSize()
+    gCtx.rect(x, y, 480, fontSize+2);
+    gCtx.strokeStyle = 'white';
+    gCtx.stroke();
+  }
+
+  // function getRectStartY(){
+  //   var posY = getLinePosY() - 
+    
   // }

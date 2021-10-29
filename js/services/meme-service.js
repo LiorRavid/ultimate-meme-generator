@@ -27,11 +27,11 @@ function _createLines(){
 function _createLine(posX=250,posY=50){
     var line = {
         txt: 'I never eat Falafel', 
-            size: 20, 
-            align: 'left', 
-            color: 'red',
-            posX,
-            posY 
+        size: 50, 
+        align: 'left', 
+        color: 'red',
+        posX,
+        posY 
     }
     return line
 }
@@ -84,6 +84,18 @@ function getTxt(){
     return gMeme.lines[gMeme.selectedLineIdx].txt
 }
 
+function getFontSize(){
+    return gMeme.lines[gMeme.selectedLineIdx].size
+}
+
+function increaseFontSize(){
+    gMeme.lines[gMeme.selectedLineIdx].size+=2
+}
+
+function decreaseFontSize(){
+    gMeme.lines[gMeme.selectedLineIdx].size-=2
+}
+
 function getLinePosX(){
     return gMeme.lines[gMeme.selectedLineIdx].posX
 }
@@ -101,11 +113,13 @@ function changeLinePosY(y){
 }
 
 function addLine() {
-    gMeme.selectedLineIdx++
-	gMeme.lines.push(
-		_createLine(undefined,gMeme.lines[gMeme.lines.length - 1].posY + 430)
-	)
-    console.log('pos after add',gMeme.lines[gMeme.lines.length - 1].posY + 430);
+    if (gMeme.selectedLineIdx>=1){
+        gMeme.lines.push(_createLine(undefined, 250))
+        gMeme.selectedLineIdx++
+    }else{
+        gMeme.selectedLineIdx++
+        gMeme.lines.push(_createLine(undefined, 490))
+    }
 }
 
 function switchLine() {
@@ -115,6 +129,7 @@ function switchLine() {
 	}
 	gMeme.selectedLineIdx = gMeme.selectedLineIdx + 1;
 }
+
 
 // TODO
 // function addImg
