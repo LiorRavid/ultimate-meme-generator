@@ -26,10 +26,12 @@ function _createLines(){
 
 function _createLine(posX=250,posY=50){
     var line = {
-        txt: 'I never eat Falafel', 
-        size: 50, 
-        align: 'left', 
-        color: 'red',
+        txt: null, 
+        size: 40, 
+        align: 'center', 
+        color: 'white',
+        strokeColor: 'black',
+        font:'impact',
         posX,
         posY 
     }
@@ -77,10 +79,14 @@ function changeSelectedLineIdx(){
 }
 
 function addText(txt){
+    if(!gMeme.lines ||gMeme.lines.length===0 ){
+        gMeme.lines = _createLines()
+    }
     gMeme.lines[gMeme.selectedLineIdx].txt = txt.toUpperCase()
 }
 
 function getTxt(){
+    if(!gMeme.lines ||gMeme.lines.length===0 )return
     return gMeme.lines[gMeme.selectedLineIdx].txt
 }
 
@@ -101,6 +107,7 @@ function getLinePosX(){
 }
 
 function getLinePosY(){
+    if(!gMeme.lines ||gMeme.lines.length===0 ) return -1
     return gMeme.lines[gMeme.selectedLineIdx].posY
 }
 
@@ -113,7 +120,10 @@ function changeLinePosY(y){
 }
 
 function addLine() {
-    if (gMeme.selectedLineIdx>=1){
+    if(!gMeme.lines ||gMeme.lines.length===0){
+        gMeme.lines.push(_createLine())
+        gMeme.selectedLineIdx= 0
+    } else if (gMeme.selectedLineIdx>=1){
         gMeme.lines.push(_createLine(undefined, 250))
         gMeme.selectedLineIdx++
     }else{
@@ -122,13 +132,84 @@ function addLine() {
     }
 }
 
+function deleteLine(){
+    gMeme.lines.splice(gMeme.selectedLineIdx,1)
+    if(!gMeme.lines ||gMeme.lines.length===0){
+        return
+    }
+    if (gMeme.selectedLineIdx===0 && gMeme.lines.length>=1) return
+    gMeme.selectedLineIdx--
+
+}
+
 function switchLine() {
-	if (gMeme.selectedLineIdx === gMeme.lines.length - 1) {
+    if(!gMeme.lines ||gMeme.lines.length===0){
+        return
+    }
+    if (gMeme.selectedLineIdx === gMeme.lines.length - 1) {
 		gMeme.selectedLineIdx = 0;
 		return;
 	}
 	gMeme.selectedLineIdx = gMeme.selectedLineIdx + 1;
 }
+
+function changeColor(color){
+    if(!gMeme.lines ||gMeme.lines.length===0){
+        return
+    }
+    gMeme.lines[gMeme.selectedLineIdx].color = color
+}
+
+function getColor(){
+    if(!gMeme.lines ||gMeme.lines.length===0){
+        return
+    }
+    return gMeme.lines[gMeme.selectedLineIdx].color
+}
+
+function changeStrokeColor(color){
+    if(!gMeme.lines ||gMeme.lines.length===0){
+        return
+    }
+    gMeme.lines[gMeme.selectedLineIdx].strokeColor = color
+}
+
+function getStrokeColor(){
+    if(!gMeme.lines ||gMeme.lines.length===0){
+        return
+    }
+    return gMeme.lines[gMeme.selectedLineIdx].strokeColor
+}
+
+function changeAlign(alignValue){
+    if(!gMeme.lines ||gMeme.lines.length===0){
+        return
+    }
+    gMeme.lines[gMeme.selectedLineIdx].align = alignValue
+}
+
+function getAlign(){
+    if(!gMeme.lines ||gMeme.lines.length===0){
+        return
+    }
+    return gMeme.lines[gMeme.selectedLineIdx].align
+}
+
+function changeFont(font){
+    if(!gMeme.lines ||gMeme.lines.length===0){
+        return
+    }
+    gMeme.lines[gMeme.selectedLineIdx].font = font
+}
+
+function getFont(){
+    if(!gMeme.lines ||gMeme.lines.length===0){
+        return
+    }
+    return gMeme.lines[gMeme.selectedLineIdx].font
+}
+
+
 
 
 // TODO

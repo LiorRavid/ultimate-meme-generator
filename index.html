@@ -13,12 +13,24 @@
     </div>
     <div class="controller flex align-center">
       <input type="text" class="input-text" placeholder="Add Text" />
+      <input type="color" class="color-picker" oninput="onChangeColor(this.value)"/>
+      <input type="color" class="stroke-color-picker" oninput="onChangeStrokeColor(this.value)"/>
       <button class="increase-font" onclick="onIncreaseFont()">A+</button>
       <button class="decrease-font" onclick="onDecreaseFont()">A-</button>
       <button class="up" onclick="onUpLine()">↑</button>
       <button class="down" onclick="onDownLine()">↓</button>
       <button class="add-line" onclick="onaddLine()">+</button>
       <button class="switch-line" onclick="onSwitchLine()">↑↓</button>
+      <button class="delete-line" onclick="onDeleteLine()">delete</button>
+      <button class="al-right" onclick="onAlign('right')">right</button>
+      <button class="al-center" onclick="onAlign('center')">center</button>
+      <button class="al-left" onclick="onAlign('left')">left</button>
+      <select class="font" name="font" value="Impact" onchange="onSelectFont(this.value)">
+        <option value="Impact">Impact</option>
+        <option value="sans-serif">sans-serif</option>
+        <option value="Arial">Arial</option>
+        <option value="Georgia">Georgia</option>
+      </select>
     </div>
     <div class="gallery">
       <header class="main-header main-layout flex space-between align-center">

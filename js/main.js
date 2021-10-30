@@ -19,20 +19,23 @@ function drawImg() {
       gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
       var lines = getTexts()
       var posY= getLinePosY()
-      drawRect(gRectX ,posY-getFontSize()+5)
-      lines.forEach((line)=>{
-        drawText(line, line.posX, line.posY)
-      })
+      if(posY!==-1){
+        drawRect(gRectX ,posY-getFontSize()+5)
+        lines.forEach((line)=>{
+          drawText(line, line.posX, line.posY)
+        })
+      }else return
     }
 }
 
 function drawText(line, x, y) {
+    if(!line.txt)return
     var maxWidth = 400
     gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = 'white'
-    gCtx.font = `${line.size}px 'impact'`
-    gCtx.textAlign='center'
+    gCtx.strokeStyle = getStrokeColor()
+    gCtx.fillStyle = getColor()
+    gCtx.font = `${line.size}px ${getFont()}`
+    gCtx.textAlign= getAlign()
     var txtLines = getLines(gCtx, line.txt, maxWidth)
     fillText(txtLines,line.size, x, y)
     // gCtx.strokeText(text, x, y)
@@ -101,12 +104,19 @@ function hideGallery(){
 function showEdit(){
   document.querySelector('canvas').style.display='block'
   document.querySelector('input').style.display='block'
+  document.querySelector('.color-picker').style.display='block'
+  document.querySelector('.stroke-color-picker').style.display='block'
   document.querySelector('.increase-font').style.display='block'
   document.querySelector('.decrease-font').style.display='block'
   document.querySelector('.up').style.display='block'
   document.querySelector('.down').style.display='block'
   document.querySelector('.add-line').style.display='block'
   document.querySelector('.switch-line').style.display='block'
+  document.querySelector('.delete-line').style.display='block'
+  document.querySelector('.al-right').style.display='block'
+  document.querySelector('.al-center').style.display='block'
+  document.querySelector('.al-left').style.display='block'
+  document.querySelector('.font').style.display='block'
 }
 
 function onIncreaseFont(){
@@ -151,9 +161,35 @@ function onSwitchLine(){
   drawImg()
 }
 
+function onDeleteLine(){
+  deleteLine()
+  drawImg()
+}
+
 function changeInputValue(){
   var txt = getTxt()
-  document.querySelector('.input-text').value = txt
+  if(!txt) document.querySelector('.input-text').value = ''
+  else document.querySelector('.input-text').value = txt
+}
+
+function onChangeColor(color){
+  changeColor(color)
+  drawImg()
+}
+
+function onChangeStrokeColor(color){
+  changeStrokeColor(color)
+  drawImg()
+}
+
+function onAlign(alignValue){
+  changeAlign(alignValue)
+  drawImg()
+}
+
+function onSelectFont(font){
+  changeFont(font)
+  drawImg()
 }
 
 // function onAddText(){
