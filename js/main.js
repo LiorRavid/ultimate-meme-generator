@@ -103,7 +103,7 @@ function hideGallery(){
 
 function showEdit(){
   document.querySelector('canvas').style.display='block'
-  document.querySelector('input').style.display='block'
+  document.querySelector('.input-text').style.display='block'
   document.querySelector('.color-picker').style.display='block'
   document.querySelector('.stroke-color-picker').style.display='block'
   document.querySelector('.increase-font').style.display='block'

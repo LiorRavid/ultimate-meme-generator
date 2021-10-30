@@ -26,6 +26,7 @@ canvas{
     position: relative;
     display:none;
     z-index: 1;
+    border-radius: 10px;
 }
 
 input{
@@ -33,17 +34,107 @@ input{
     z-index: 1;
 }
 
+select{
+    display: none;
+}
+
+.link-gallery{
+    margin-top: 24px;
+    font-size:0.875rem;
+    line-height: 1rem;
+}
+
+.path{  
+    margin-top: 2px;
+    margin-left:26px;
+    margin-right: 15px;
+    width: 7px;
+    height: 12px;
+}
+
+.canvas-section{
+    background-color: white;
+    width: 889px;
+}
+
+.canvas-section a{
+    color:#989898;
+}
+
+.canvas-container{
+    margin: 0;
+    margin-top: 119px;
+    margin-bottom: 251px;
+}
+.controller-section{
+    width: 551px;
+    background-color: #F8F8F8;
+}
+
+.controller-section .controller-header{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
 .controller{
     justify-content: center;
+    width: 486px;
+    border: 1px solid #DEDEDE;
+    border-radius: 10px;
+    margin-left: 35px; 
+    background-color: white;
+}
+
+.header-buttons{
+    justify-content: space-between;
+}
+
+h3{
+    font-size: 1.5rem;
+    color: #727272;
 }
 
 button{
+    margin: 0 auto;
+    padding: 10px;
     display: none;
-    width: 40px;
-    height: 20px;
     align-self: center;
+    border: none;
+    background-color:#F8F8F8;
 }
 
+.buttons{
+    height:  44px;
+    align-items: center;
+    border-bottom: 1px solid #DEDEDE;
+}
+
+.buttons button{
+
+    background-color: white;
+}
+
+.font-size{
+    border-right: 1px solid black;
+}
+
+.align{
+    border-right: 1px solid black;
+}
+
+.font{
+    width: 160px;
+    height: 22px;   
+}
+
+.input-text{
+    text-align: center;
+    border:none;
+    font-family: 'Roboto-Regular';
+    height:66px;
+    width: 486px;
+
+}
 
 /* GALLERY */
 * {
@@ -105,6 +196,7 @@ a:hover {
 .logo img {
     height: 2rem;
     width: 9.5rem;
+    margin-left:1.25rem
 }
 
 .main-nav {
