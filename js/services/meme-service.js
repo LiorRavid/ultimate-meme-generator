@@ -2,13 +2,13 @@
 
 const KEY_GMEME = 'gMemeData'
 
-var gKeywords = {'happy': 12,'funny puk': 1}
+// var gKeywords = {'happy': 12,'funny puk': 1}
 
 var gIdx = 0
 
 var gImgs = _createImgs()
 
-var gMeme = createMeme(7,0)
+var gMeme 
 
 function createMeme(selectedImgId, selectedLineIdx){
     var meme = {
@@ -24,7 +24,7 @@ function _createLines(){
     return lines
 }
 
-function _createLine(posX=250,posY=50){
+function _createLine(posX=getPosX()/2 ,posY=getPosX()/10){
     var line = {
         txt: null, 
         size: 40, 
@@ -36,6 +36,16 @@ function _createLine(posX=250,posY=50){
         posY 
     }
     return line
+}
+
+function getPosX(){
+    var canPos = canvasPos()
+    return canPos.posX
+}
+
+function getPosY(){
+    var canPos = canvasPos()
+    return canPos.posY
 }
 
 function _createImgs(){
@@ -58,6 +68,10 @@ function _createImg(){
     return img
 }
 
+function getImgs(){
+    return gImgs
+}
+
 function getTexts(){
     return gMeme.lines
 }
@@ -71,11 +85,8 @@ function getSelectedImgId(){
 }
 
 function changeSelectedImg(imgId){
-    gMeme.selectedImgId= imgId - 1
-}
-
-function changeSelectedLineIdx(){
-
+    if(!gMeme) gMeme = createMeme(imgId-1, 0)
+    else gMeme.selectedImgId= imgId - 1
 }
 
 function addText(txt){
@@ -210,30 +221,3 @@ function getFont(){
 }
 
 
-
-
-// TODO
-// function addImg
-// function getImgs
-// createKeyWord
-// createKeyWords
-// getKeyWord
-// getImgURL dynamic
-// לעשות השמה של מילות מפתח
-
-
-
-
-// var gMeme = { 
-    //     selectedImgId: 5, 
-    //     selectedLineIdx: 0, 
-    //     lines: [ 
-    //         { 
-    //             txt: 'I never eat Falafel', 
-    //             size: 20, align: 'left', 
-    //             color: 'red' 
-    //         }
-    //     ]
-    // }
-
-    // var gImgs = [{id: 1, url: 'img/popo.jpg', keywords: ['happy']}]

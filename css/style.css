@@ -228,19 +228,15 @@ a:hover {
     margin-bottom: 15px;
     display: grid;
     gap: 15px;
-    /* height: 350px; */
-    grid-template-columns: repeat(3,230px);
-    grid-template-rows:repeat(3,230px);
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
     justify-content: center ;
  }
  
-.image1 {
-    background: url('../img/1.jpg');
-    background-size: cover;
+.image{
     object-fit: cover;
   }
   
-  .image2 {
+  /* .image2 {
     background: url('../img/2.jpg');
     background-size: cover;
     object-fit: cover;
@@ -279,7 +275,7 @@ a:hover {
     background: url('../img/9.jpg');
     background-size: cover;
     object-fit: cover;
-  }
+  } */
 
 /* HELPERS */
 

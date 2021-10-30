@@ -4,17 +4,22 @@ var gElCanvas
 var gCtx
 var gRectX = 10
 
-function init() {
+
+function createCanvas(){
   gElCanvas = document.querySelector('canvas')
   gCtx = gElCanvas.getContext('2d')
-  // drawImg()
-  // resizeCanvas()
+}
+
+function canvasPos(){
+  return {
+    posX: gElCanvas.width,
+    posY: gElCanvas.height
+  }
 }
 
 function drawImg() {
-    var img = new Image();
+    var img = new Image()
     img.src= getImgUrl(getSelectedImgId())
-    // add an imageId instead of 5
     img.onload = () => {
       gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
       var lines = getTexts()
@@ -30,7 +35,7 @@ function drawImg() {
 
 function drawText(line, x, y) {
     if(!line.txt)return
-    var maxWidth = 400
+    var maxWidth = getPosX() - 100
     gCtx.lineWidth = 2
     gCtx.strokeStyle = getStrokeColor()
     gCtx.fillStyle = getColor()
@@ -38,11 +43,10 @@ function drawText(line, x, y) {
     gCtx.textAlign= getAlign()
     var txtLines = getLines(gCtx, line.txt, maxWidth)
     fillText(txtLines,line.size, x, y)
-    // gCtx.strokeText(text, x, y)
   }
 
   function clearCanvas() {
-    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
   }
 
   
@@ -66,11 +70,13 @@ function drawText(line, x, y) {
     return lines
 }
 
-document.querySelector('.input-text').addEventListener('keyup',function(){
-  var txt = document.querySelector('.input-text').value;
-  addText(txt)
-  drawImg()
-})
+function addOnKeyUp(){
+  document.querySelector('.input-text').addEventListener('keyup',function(){
+    var txt = document.querySelector('.input-text').value;
+    addText(txt)
+    drawImg()
+  })
+}
 
 function fillText(txtLines, fontZise, x , y){
   var lineIdx = 0
@@ -89,7 +95,6 @@ function fillText(txtLines, fontZise, x , y){
 }
 
 function onEditMeme(elImg){
-  // clearCanvas()
   var imgId = elImg.id
   changeSelectedImg(imgId)
   hideGallery()
@@ -192,23 +197,13 @@ function onSelectFont(font){
   drawImg()
 }
 
-// function onAddText(){
-  //   var elTxt = document.querySelector('.input-text')
-  //   const txt = elTxt.value
-  //   addText(txt, getSelectedLineIdx())
-  //   clearCanvas()
-  //   drawImg()
-  // }
 
-  function drawRect(x,y){
-    gCtx.beginPath();
-    var fontSize = getFontSize()
-    gCtx.rect(x, y, 480, fontSize+2);
-    gCtx.strokeStyle = 'white';
-    gCtx.stroke();
-  }
+function drawRect(x,y){
+  gCtx.beginPath();
+  var fontSize = getFontSize()
+  gCtx.rect(x, y, getPosX()-20, fontSize+2);
+  gCtx.strokeStyle = 'white';
+  gCtx.stroke();
+}
 
-  // function getRectStartY(){
-  //   var posY = getLinePosY() - 
-    
-  // }
+  

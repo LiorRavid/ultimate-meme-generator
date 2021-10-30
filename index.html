@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
-    <title>Document</title>
+    <title>MemeGen</title>
   </head>
   <body onload="init()">
     <header class="main-header main-layout flex space-between align-center">
@@ -68,13 +68,13 @@
                 </button>
               </div>
               <div class="align flex">
-                <button class="al-left" onclick="onAlign('left')"><img src="img/left.png" alt="" /></button>
+                <button class="al-right" onclick="onAlign('right')">
+                  <img src="img/right.png" alt=""/>
+                </button>
                 <button class="al-center" onclick="onAlign('center')">
                   <img src="img/center.png" alt="" />
                 </button>
-                <button class="al-right" onclick="onAlign('right')">
-                  <img src="img/right.png" alt="" />
-                </button>
+                <button class="al-left" onclick="onAlign('left')"><img src="img/left.png" alt="" /></button>
               </div>
               <div class="color flex">
                 <input
@@ -96,24 +96,14 @@
     </main>
     <div class="gallery">
       <main class="main-gallery main-layout">
-        <div class="grid">
-          <div class="image1 grid" id="1" onclick="onEditMeme(this)"></div>
-          <div class="image2 grid" id="2" onclick="onEditMeme(this)"></div>
-          <div class="image3 grid" id="3" onclick="onEditMeme(this)"></div>
-          <div class="image4 grid" id="4" onclick="onEditMeme(this)"></div>
-          <div class="image5 grid" id="5" onclick="onEditMeme(this)"></div>
-          <div class="image6 grid" id="6" onclick="onEditMeme(this)"></div>
-          <div class="image7 grid" id="7" onclick="onEditMeme(this)"></div>
-          <div class="image8 grid" id="8" onclick="onEditMeme(this)"></div>
-          <div class="image9 grid" id="9" onclick="onEditMeme(this)"></div>
-        </div>
+        <div class="grid"></div>
       </main>
     </div>
 
     <script src="js/services/storage-service.js"></script>
     <script src="js/services/utils-service.js"></script>
     <script src="js/services/meme-service.js"></script>
-    <script src="js/gmeme-controller.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/gmeme-controller.js"></script>
   </body>
 </html>
