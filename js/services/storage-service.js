@@ -3,7 +3,7 @@
 function loadFromStorage(key) {
     const json = localStorage.getItem(key)
     const val = JSON.parse(json)
-    return val;
+    return val
 }
 
 function saveToStorage(key, val) {

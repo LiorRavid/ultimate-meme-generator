@@ -54,7 +54,6 @@ function _createImgs(){
         imgs.push(_createImg())
         gIdx++
     }
-    console.log('imgs',imgs)
     return imgs
 }  
 
@@ -64,7 +63,6 @@ function _createImg(){
         url:`img/${gIdx+1}.jpg`, 
         keywords: []
     }
-    console.log('img',img)
     return img
 }
 
@@ -135,11 +133,11 @@ function addLine() {
         gMeme.lines.push(_createLine())
         gMeme.selectedLineIdx= 0
     } else if (gMeme.selectedLineIdx>=1){
-        gMeme.lines.push(_createLine(undefined, 250))
+        gMeme.lines.push(_createLine(undefined, getPosX()/2))
         gMeme.selectedLineIdx++
     }else{
         gMeme.selectedLineIdx++
-        gMeme.lines.push(_createLine(undefined, 490))
+        gMeme.lines.push(_createLine(undefined, getPosX()-20))
     }
 }
 
@@ -158,10 +156,10 @@ function switchLine() {
         return
     }
     if (gMeme.selectedLineIdx === gMeme.lines.length - 1) {
-		gMeme.selectedLineIdx = 0;
-		return;
+		gMeme.selectedLineIdx = 0
+		return
 	}
-	gMeme.selectedLineIdx = gMeme.selectedLineIdx + 1;
+	gMeme.selectedLineIdx = gMeme.selectedLineIdx + 1
 }
 
 function changeColor(color){

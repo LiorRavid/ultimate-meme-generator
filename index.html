@@ -13,7 +13,7 @@
         <img src="img/cooltext338881859335046 1.png" alt="" />
       </div>
       <ul class="main-nav flex clean-list">
-        <li><a href="#">Gallery</a></li>
+        <li><a href="#" onclick="backToGallery()">Gallery</a></li>
         <li><a href="#">About</a></li>
       </ul>
     </header>
@@ -69,12 +69,14 @@
               </div>
               <div class="align flex">
                 <button class="al-right" onclick="onAlign('right')">
-                  <img src="img/right.png" alt=""/>
+                  <img src="img/right.png" alt="" />
                 </button>
                 <button class="al-center" onclick="onAlign('center')">
                   <img src="img/center.png" alt="" />
                 </button>
-                <button class="al-left" onclick="onAlign('left')"><img src="img/left.png" alt="" /></button>
+                <button class="al-left" onclick="onAlign('left')">
+                  <img src="img/left.png" alt="" />
+                </button>
               </div>
               <div class="color flex">
                 <input
@@ -89,7 +91,7 @@
                 />
               </div>
             </div>
-            <input type="text" class="input-text" placeholder="Add Text"/> 
+            <input type="text" class="input-text" placeholder="Add Text" />
           </div>
         </section>
       </div>
@@ -101,9 +103,8 @@
     </div>
 
     <script src="js/services/storage-service.js"></script>
-    <script src="js/services/utils-service.js"></script>
     <script src="js/services/meme-service.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/canvas-controller.js"></script>
     <script src="js/gmeme-controller.js"></script>
   </body>
 </html>

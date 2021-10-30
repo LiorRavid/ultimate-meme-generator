@@ -15,6 +15,10 @@ html{
 }
 
 
+.main-Editor{
+    display: none;
+}
+
 canvas{
     display: block;
     margin: 0 auto;
@@ -24,19 +28,10 @@ canvas{
     object-fit: cover;
     font-family: "impacted";
     position: relative;
-    display:none;
     z-index: 1;
     border-radius: 10px;
 }
 
-input{
-    display: none;
-    z-index: 1;
-}
-
-select{
-    display: none;
-}
 
 .link-gallery{
     margin-top: 24px;
@@ -97,7 +92,6 @@ h3{
 button{
     margin: 0 auto;
     padding: 10px;
-    display: none;
     align-self: center;
     border: none;
     background-color:#F8F8F8;
@@ -129,7 +123,6 @@ button{
 
 .input-text{
     text-align: center;
-    border:none;
     font-family: 'Roboto-Regular';
     height:66px;
     width: 486px;
@@ -224,6 +217,7 @@ a:hover {
 
 /* main-gallery */
 .grid{
+    margin: auto;
     margin-top:15px;
     margin-bottom: 15px;
     display: grid;

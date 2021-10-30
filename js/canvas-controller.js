@@ -49,8 +49,6 @@ function drawText(line, x, y) {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
   }
 
-  
-
   function getLines(ctx, text, maxWidth) {
     var words = text.split(" ")
     var lines = []
@@ -63,7 +61,7 @@ function drawText(line, x, y) {
             currentLine += " " + word
         } else {
             lines.push(currentLine)
-            currentLine = word;
+            currentLine = word
         }
     }
     lines.push(currentLine)
@@ -72,7 +70,7 @@ function drawText(line, x, y) {
 
 function addOnKeyUp(){
   document.querySelector('.input-text').addEventListener('keyup',function(){
-    var txt = document.querySelector('.input-text').value;
+    var txt = document.querySelector('.input-text').value
     addText(txt)
     drawImg()
   })
@@ -86,7 +84,6 @@ function fillText(txtLines, fontZise, x , y){
     gCtx.strokeText(txtLines[0], x,  y)
   }else {
     txtLines.forEach(txtLine => {
-      console.log('lineIdx*txtLine.size',lineIdx*fontZise);
       gCtx.fillText(txtLine, x, y + lineIdx*fontZise)
       gCtx.strokeText(txtLine, x,  y + lineIdx*fontZise)
       lineIdx++
@@ -102,42 +99,33 @@ function onEditMeme(elImg){
   drawImg()
 }
 
+function showGallery(){
+  document.querySelector('.gallery').style.display='block'
+}
+
 function hideGallery(){
   document.querySelector('.gallery').style.display='none'
 }
 
 function showEdit(){
-  document.querySelector('canvas').style.display='block'
-  document.querySelector('.input-text').style.display='block'
-  document.querySelector('.color-picker').style.display='block'
-  document.querySelector('.stroke-color-picker').style.display='block'
-  document.querySelector('.increase-font').style.display='block'
-  document.querySelector('.decrease-font').style.display='block'
-  document.querySelector('.up').style.display='block'
-  document.querySelector('.down').style.display='block'
-  document.querySelector('.add-line').style.display='block'
-  document.querySelector('.switch-line').style.display='block'
-  document.querySelector('.delete-line').style.display='block'
-  document.querySelector('.al-right').style.display='block'
-  document.querySelector('.al-center').style.display='block'
-  document.querySelector('.al-left').style.display='block'
-  document.querySelector('.font').style.display='block'
+  document.querySelector('.main-Editor').style.display = 'block'
+}
+
+function  hideEdit(){
+  document.querySelector('.main-Editor').style.display = 'none'
 }
 
 function onIncreaseFont(){
-  // clearCanvas()
   increaseFontSize()
   drawImg()
 }
 
 function onDecreaseFont(){
-  // clearCanvas()
   decreaseFontSize()
   drawImg()
 }
 
 function onUpLine(){
-  // clearCanvas()
   var LinePosY = getLinePosY()
   LinePosY-=10
   if(LinePosY<50)LinePosY=50
@@ -146,7 +134,6 @@ function onUpLine(){
 }
 
 function onDownLine(){
-  // clearCanvas()
   var LinePosY = getLinePosY()
   LinePosY+=10
   if(LinePosY>490)LinePosY=490
@@ -197,13 +184,12 @@ function onSelectFont(font){
   drawImg()
 }
 
-
 function drawRect(x,y){
-  gCtx.beginPath();
+  gCtx.beginPath()
   var fontSize = getFontSize()
-  gCtx.rect(x, y, getPosX()-20, fontSize+2);
-  gCtx.strokeStyle = 'white';
-  gCtx.stroke();
+  gCtx.rect(x, y, getPosX()-20, fontSize+2)
+  gCtx.strokeStyle = 'white'
+  gCtx.stroke()
 }
 
   

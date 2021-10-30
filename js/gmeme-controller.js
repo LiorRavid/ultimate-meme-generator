@@ -14,3 +14,8 @@ function renderGalleryImgs(){
         }).join("")
         document.querySelector(".grid").innerHTML = strHtmls
 }
+
+function backToGallery(){
+    hideEdit()
+    showGallery()
+}
