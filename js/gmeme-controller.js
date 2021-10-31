@@ -17,5 +17,8 @@ function renderGalleryImgs(){
 
 function backToGallery(){
     hideEdit()
+    clearCanvas()
+    removeMeme()
+    changeInputValue()
     showGallery()
 }

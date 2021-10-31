@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 @font-face {
     font-family: "impact";
     src: url(/fonts/Impact.ttf);
@@ -78,6 +77,7 @@ canvas{
     border-radius: 10px;
     margin-left: 35px; 
     background-color: white;
+    margin-bottom: 50px;
 }
 
 .header-buttons{
@@ -97,6 +97,18 @@ button{
     background-color:#F8F8F8;
 }
 
+button.up{
+    position: absolute;
+    top:132px;
+    right:238px;
+}
+
+button.down{
+    position: absolute;
+    top:132px;
+    right:219px;
+}
+
 .buttons{
     height:  44px;
     align-items: center;
@@ -110,6 +122,7 @@ button{
 
 .font-size{
     border-right: 1px solid black;
+    padding-right: 9px;
 }
 
 .align{
@@ -118,7 +131,18 @@ button{
 
 .font{
     width: 160px;
-    height: 22px;   
+    height: 22px;
+    margin-left: 5px;   
+}
+
+.color{
+    margin-right: 5px;
+}
+
+.color > input{
+    visibility:hidden;
+    width: 0px;
+    height: 0px;
 }
 
 .input-text{
@@ -126,7 +150,27 @@ button{
     font-family: 'Roboto-Regular';
     height:66px;
     width: 486px;
+}
 
+.btns-save{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btns-save > *{
+    background-color: #FF9826;
+    width: 140px;
+    height: 54px;
+    border: 1px solid #FF9826;
+    box-sizing: border-box;
+    border-radius: 35px;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: white;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
 }
 
 /* GALLERY */
@@ -230,47 +274,6 @@ a:hover {
     object-fit: cover;
   }
   
-  /* .image2 {
-    background: url('../img/2.jpg');
-    background-size: cover;
-    object-fit: cover;
-  }
-  .image3 {
-    background: url('../img/3.jpg');
-    background-size: cover;
-    object-fit: cover;
-  }
-  .image4 {
-    background: url('../img/4.jpg');
-    background-size: cover;
-    object-fit: cover;
-  }
-  .image5 {
-    background: url('../img/5.jpg');
-    background-size: cover;
-    object-fit: cover;
-  }
-  .image6 {
-    background: url('../img/6.jpg');
-    background-size: cover;
-    object-fit: cover;
-  }
-  .image7 {
-    background: url('../img/7.jpg');
-    background-size: cover;
-    object-fit: cover;
-  }
-  .image8 {
-    background: url('../img/8.jpg');
-    background-size: cover;
-    object-fit: cover;
-  }
-  .image9 {
-    background: url('../img/9.jpg');
-    background-size: cover;
-    object-fit: cover;
-  } */
-
 /* HELPERS */
 
 /* flex */

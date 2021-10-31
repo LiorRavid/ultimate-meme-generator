@@ -5,12 +5,17 @@ var gCtx
 var gRectX = 10
 
 
+
 function createCanvas(){
   gElCanvas = document.querySelector('canvas')
   gCtx = gElCanvas.getContext('2d')
 }
 
-function canvasPos(){
+function clearCanvas() {
+  gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
+}
+
+function getCanvasSize(){
   return {
     posX: gElCanvas.width,
     posY: gElCanvas.height
@@ -37,18 +42,15 @@ function drawText(line, x, y) {
     if(!line.txt)return
     var maxWidth = getPosX() - 100
     gCtx.lineWidth = 2
-    gCtx.strokeStyle = getStrokeColor()
-    gCtx.fillStyle = getColor()
-    gCtx.font = `${line.size}px ${getFont()}`
-    gCtx.textAlign= getAlign()
+    gCtx.strokeStyle = line.strokeColor
+    gCtx.fillStyle = line.color
+    gCtx.font = `${line.size}px ${line.font}`
+    gCtx.textAlign= line.align
     var txtLines = getLines(gCtx, line.txt, maxWidth)
     fillText(txtLines,line.size, x, y)
   }
 
-  function clearCanvas() {
-    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
-  }
-
+  
   function getLines(ctx, text, maxWidth) {
     var words = text.split(" ")
     var lines = []
@@ -134,9 +136,10 @@ function onUpLine(){
 }
 
 function onDownLine(){
+  var canvasSize = getCanvasSize()
   var LinePosY = getLinePosY()
   LinePosY+=10
-  if(LinePosY>490)LinePosY=490
+  if(LinePosY>canvasSize.posY-20)LinePosY=canvasSize.posY-20
   changeLinePosY(LinePosY)
   drawImg()
 }
@@ -160,7 +163,7 @@ function onDeleteLine(){
 
 function changeInputValue(){
   var txt = getTxt()
-  if(!txt) document.querySelector('.input-text').value = ''
+  if(!txt) document.querySelector('.input-text').value = 'Edit your text'
   else document.querySelector('.input-text').value = txt
 }
 
@@ -187,9 +190,16 @@ function onSelectFont(font){
 function drawRect(x,y){
   gCtx.beginPath()
   var fontSize = getFontSize()
-  gCtx.rect(x, y, getPosX()-20, fontSize+2)
+  var posXend = getPosX()-20
+  var posYend = fontSize+2
+  gCtx.rect(x, y, posXend, posYend)
   gCtx.strokeStyle = 'white'
   gCtx.stroke()
 }
+
+
+
+
+
 
   

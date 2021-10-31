@@ -55,7 +55,7 @@
                 onchange="onSelectFont(this.value)"
               >
                 <option value="Impact">Impact</option>
-                <option value="sans-serif">sans-serif</option>
+                <option value="monospace">monospace</option>
                 <option value="Arial">Arial</option>
                 <option value="Georgia">Georgia</option>
               </select>
@@ -79,7 +79,14 @@
                 </button>
               </div>
               <div class="color flex">
-                <input
+                  <button type="color" onclick="textcolor.click()" class="item-4"><img
+                          src="img/textcolor.png"></button>
+                  <input oninput="onChangeColor(this.value)" id="textcolor" type="color" value="#ff0000">
+                  <button onclick="favcolor.click()" class="item-5"><img src="img/strokecolor.png"></button>
+                  <input oninput="onChangeStrokeColor(this.value)" type="color" id="favcolor" name="favcolor"
+                      value="#ff0000">
+              </div>
+                <!-- <input
                   type="color"
                   class="color-picker"
                   oninput="onChangeColor(this.value)"
@@ -88,11 +95,15 @@
                   type="color"
                   class="stroke-color-picker"
                   oninput="onChangeStrokeColor(this.value)"
-                />
-              </div>
+                /> -->
             </div>
-            <input type="text" class="input-text" placeholder="Add Text" />
+            <input type="text" class="input-text" placeholder="Edit your text here" />
           </div>
+          <section class = "btns-save">
+            <button onclick="onSaveMeme()">save</button>
+            <button>download</button>
+            <button>share</button>
+          </section>
         </section>
       </div>
     </main>

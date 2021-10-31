@@ -10,13 +10,17 @@ var gImgs = _createImgs()
 
 var gMeme 
 
-function createMeme(selectedImgId, selectedLineIdx){
+function createMeme(selectedImgId){
     var meme = {
         selectedImgId,
-        selectedLineIdx,
+        selectedLineIdx: 0,
         lines: _createLines()
     }
     return meme
+}
+
+function removeMeme(){
+    gMeme={}
 }
 
 function _createLines(){
@@ -26,7 +30,7 @@ function _createLines(){
 
 function _createLine(posX=getPosX()/2 ,posY=getPosX()/10){
     var line = {
-        txt: null, 
+        txt: 'Edit your text here', 
         size: 40, 
         align: 'center', 
         color: 'white',
@@ -39,12 +43,12 @@ function _createLine(posX=getPosX()/2 ,posY=getPosX()/10){
 }
 
 function getPosX(){
-    var canPos = canvasPos()
+    var canPos = getCanvasSize()
     return canPos.posX
 }
 
 function getPosY(){
-    var canPos = canvasPos()
+    var canPos = getCanvasSize()
     return canPos.posY
 }
 
@@ -83,8 +87,7 @@ function getSelectedImgId(){
 }
 
 function changeSelectedImg(imgId){
-    if(!gMeme) gMeme = createMeme(imgId-1, 0)
-    else gMeme.selectedImgId= imgId - 1
+    gMeme = createMeme(imgId-1)
 }
 
 function addText(txt){
@@ -95,7 +98,7 @@ function addText(txt){
 }
 
 function getTxt(){
-    if(!gMeme.lines ||gMeme.lines.length===0 )return
+    if(!gMeme.lines ||gMeme.lines.length===0 )return 
     return gMeme.lines[gMeme.selectedLineIdx].txt
 }
 
@@ -142,19 +145,17 @@ function addLine() {
 }
 
 function deleteLine(){
-    gMeme.lines.splice(gMeme.selectedLineIdx,1)
     if(!gMeme.lines ||gMeme.lines.length===0){
         return
     }
+    gMeme.lines.splice(gMeme.selectedLineIdx,1)
     if (gMeme.selectedLineIdx===0 && gMeme.lines.length>=1) return
     gMeme.selectedLineIdx--
 
 }
 
 function switchLine() {
-    if(!gMeme.lines ||gMeme.lines.length===0){
-        return
-    }
+    if(!gMeme.lines ||gMeme.lines.length===0) return
     if (gMeme.selectedLineIdx === gMeme.lines.length - 1) {
 		gMeme.selectedLineIdx = 0
 		return
@@ -194,7 +195,22 @@ function changeAlign(alignValue){
     if(!gMeme.lines ||gMeme.lines.length===0){
         return
     }
-    gMeme.lines[gMeme.selectedLineIdx].align = alignValue
+    switch (alignValue) {
+        case "right":
+            gMeme.lines[gMeme.selectedLineIdx].posX = 20
+            gMeme.lines[gMeme.selectedLineIdx].align= 'left'
+          break;
+        case "center":
+            gMeme.lines[gMeme.selectedLineIdx].posX = getPosX()/2
+            gMeme.lines[gMeme.selectedLineIdx].align= 'center'
+          break;
+        case "left":
+            gMeme.lines[gMeme.selectedLineIdx].posX = getPosX()-20
+            gMeme.lines[gMeme.selectedLineIdx].align= 'right'
+          break;
+        default:
+      }
+    // gMeme.lines[gMeme.selectedLineIdx].align = alignValue
 }
 
 function getAlign(){
